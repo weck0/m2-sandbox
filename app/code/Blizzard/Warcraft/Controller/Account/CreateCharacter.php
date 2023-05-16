@@ -65,6 +65,9 @@ class CreateCharacter extends Action
      */
     public function execute()
     {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $logger = $objectManager->get(\Psr\Log\LoggerInterface::class);
+        $logger->info('Your log message');
         if ($this->customerSession->isLoggedIn()) {
             $customerId = $this->customerSession->getCustomer()->getId();
 
@@ -75,12 +78,11 @@ class CreateCharacter extends Action
             $data = [
                 'customer_id' => $customerId,
                 'experience' => 0,
-                'promotion' => 'None yet !',
-                'rank' => 'New player'
+                'promotion' => '0 %',
+                'rank' => 'New'
             ];
 
             if (!$character->getId()) {
-
                 $connection = $warcraftResource->getConnection();
                 $connection->insert($warcraftResource->getMainTable(), $data);
                 $this->messageManager->addSuccessMessage(__('Character created successfully.'));
