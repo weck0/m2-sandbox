@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var \Blizzard\Warcraft\Block\Account\Warcraft $block
+ */
+
+$customerCharacter = $block->getCustomerCharacter();
+if ($customerCharacter):
+?>
+    <h2><?= __('Character Information') ?></h2>
+    <ul>
+        <li><?= __('Rank: %1', $customerCharacter['rank']) ?></li>
+        <li><?= __('Experience: %1', $customerCharacter['experience']) ?></li>
+        <li><?= __('Promotion: %1', $customerCharacter['promotion'] ?? __('None')) ?></li>
+    </ul>
+<?php else: ?>
+    <form action="<?= $block->getUrl('warcraft/account/createCharacter') ?>" method="post">
+        <input name="form_key" type="hidden" value="<?= $block->getFormKey() ?>"/>
+        <button type="submit" class="action primary">
+            <span><?= __('Create Character') ?></span>
+        </button>
+    </form>
+<?php endif; ?>
+
