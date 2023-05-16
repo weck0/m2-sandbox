@@ -2,23 +2,24 @@
 
 namespace Macademy\Blog\ViewModel;
 
-use Magento\Framework\DataObject;
+use Macademy\Blog\Model\ResourceModel\Post\Collection;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 class Post implements ArgumentInterface
 {
+
+    public function __construct(
+        private Collection $collection,
+    )
+    {}
+
     public function getList(): array
     {
-        return [
-          new DataObject(['id' => 1, 'title' => 'Post A']),
-          new DataObject(['id' => 2, 'title' => 'Post B']),
-          new DataObject(['id' => 3, 'title' => 'Post C']),
-          new DataObject(['id' => 4, 'title' => 'Post D']),
-        ];
+        return $this->collection->getItems();
     }
 
     public function getCount(): int
     {
-        return count($this->getList());
+        return $this->collection->count();
     }
 }
