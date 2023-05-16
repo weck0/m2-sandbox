@@ -2,8 +2,6 @@
 
 namespace Macademy\Blog\Api\Data;
 
-use Magento\Tests\NamingConvention\true\string;
-
 /**
 * Blog post interface.
 * @api
