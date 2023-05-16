@@ -1,5 +1,6 @@
 <?php
 /** @var Magento\Framework\View\Element\Template $block */
+/** @var Magento\Framework\Escaper $escaper */
 /** @var Macademy\Blog\ViewModel\Post $postVm */
 $postVm = $block->getData('post_vm');
 ?>
@@ -10,7 +11,7 @@ $postVm = $block->getData('post_vm');
         <?php foreach($postVm->getList() as $post): ?>
             <li>
                 <a href="<?= $block->getUrl('blog/post/detail', ['id' => $post->getId()]) ?>">
-                    <?= $post->getTitle() ?>
+                    <?= $escaper->escapeHtml($post->getTitle()) ?>
                 </a>
             </li>
         <?php endforeach; ?>
