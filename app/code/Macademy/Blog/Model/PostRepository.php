@@ -17,13 +17,13 @@ class PostRepository implements PostRepositoryInterface
     ) {
     }
 
-    public function getById($id): PostInterface
+    public function getById(int $id): PostInterface
     {
         $post = $this->postFactory->create();
         $this->postResourceModel->load($post, $id);
 
         if (!$post->getId()) {
-            throw new NoSuchEntityException(__('The blog with "%1" ID doesn\'t exist.'), $id);
+            throw new NoSuchEntityException(__('The blog with "%1" ID doesn\'t exist.', $id));
         }
 
         return $post;
@@ -53,5 +53,6 @@ class PostRepository implements PostRepositoryInterface
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__($exception->getMessage()));
         }
+        return true;
     }
 }
