@@ -3,7 +3,6 @@
 namespace Blizzard\Warcraft\Controller\Account;
 
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\Action\Context;
 use Magento\Customer\Model\Session;
 use Blizzard\Warcraft\Model\WarcraftFactory;
 use Blizzard\Warcraft\Model\ResourceModel\Warcraft as WarcraftResource;
@@ -17,7 +16,6 @@ use Magento\Framework\Message\ManagerInterface;
 class Character implements HttpGetActionInterface
 {
     public function __construct(
-        private Context $context,
         protected Session $customerSession,
         protected WarcraftFactory $warcraftFactory,
         protected WarcraftResource $warcraftResource,
