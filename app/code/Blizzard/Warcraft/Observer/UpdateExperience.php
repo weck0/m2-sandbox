@@ -10,20 +10,12 @@ use Blizzard\Warcraft\Helper\Data;
 
 class UpdateExperience implements ObserverInterface
 {
-    protected $customerSession;
-    protected $warcraftFactory;
-    protected $warcraftResource;
-
     public function __construct(
-        Session $customerSession,
-        WarcraftFactory $warcraftFactory,
-        WarcraftResource $warcraftResource,
-        Data $helperData
+        private Session $customerSession,
+        private WarcraftFactory $warcraftFactory,
+        private WarcraftResource $warcraftResource,
+        private Data $helperData
     ) {
-        $this->customerSession = $customerSession;
-        $this->warcraftFactory = $warcraftFactory;
-        $this->warcraftResource = $warcraftResource;
-        $this->helperData = $helperData;
     }
 
     public function execute(Observer $observer)
