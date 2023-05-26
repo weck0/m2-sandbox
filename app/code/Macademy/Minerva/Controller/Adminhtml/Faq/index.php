@@ -12,9 +12,6 @@ class index extends Action implements HttpGetActionInterface
 {
     const ADMIN_RESOURCE = 'Macademy_Minerva::faq';
 
-    /** @var PageFactory */
-    private $pageFactory;
-
     /**
      * Index constructor.
      * @param Context $context
@@ -22,10 +19,9 @@ class index extends Action implements HttpGetActionInterface
      */
     public function __construct(
         Context $context,
-        PageFactory $pageFactory
+        private PageFactory $pageFactory
     ) {
         parent::__construct($context);
-        $this->pageFactory = $pageFactory;
     }
 
     /**
