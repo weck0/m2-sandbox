@@ -2,6 +2,7 @@
 
 namespace Macademy\Minerva\Controller\Adminhtml\Faq;
 
+use Macademy\Minerva\Model\ResourceModel\Faq as FaqResource;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
@@ -20,20 +21,21 @@ class MassDelete extends Action implements HttpPostActionInterface
     /** @var Filter  */
     protected $filter;
 
-    /**
-     * @param Context $context
-     * @param CollectionFactory $collectionFactory
-     * @param Filter $filter
-     */
+    /** @var FaqResource */
+    protected $faqResource;
+
+
     public function __construct(
         Context $context,
         CollectionFactory $collectionFactory,
-        Filter $filter
+        Filter $filter,
+        FaqResource $faqResource,
     )
     {
         parent::__construct($context);
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
+        $this->faqResource = $faqResource;
     }
 
     public function execute(): Redirect
@@ -43,7 +45,7 @@ class MassDelete extends Action implements HttpPostActionInterface
         $itemsSize = $items->getSize();
 
         foreach($items as $item){
-            $item->delete();
+            $this->faqResource->delete($item);
         }
 
         $this->messageManager->addSuccessMessage(__('A total of %1 records have been deleted.', $itemsSize));
