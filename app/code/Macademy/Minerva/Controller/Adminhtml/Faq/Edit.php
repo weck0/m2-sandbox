@@ -8,9 +8,9 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
-class index extends Action implements HttpGetActionInterface
+class Edit extends Action implements HttpGetActionInterface
 {
-    const ADMIN_RESOURCE = 'Macademy_Minerva::faq';
+    const ADMIN_RESOURCE = 'Macademy_Minerva::faq_save';
 
     /**
      * Index constructor.
@@ -31,7 +31,7 @@ class index extends Action implements HttpGetActionInterface
     {
         $page = $this->pageFactory->create();
         $page->setActiveMenu('Macademy_Minerva::faq');
-        $page->getConfig()->getTitle()->prepend(__('FAQs'));
+        $page->getConfig()->getTitle()->prepend(__('Edit FAQ'));
 
         return $page;
     }

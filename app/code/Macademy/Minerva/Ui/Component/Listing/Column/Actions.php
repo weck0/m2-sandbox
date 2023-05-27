@@ -58,8 +58,8 @@ class Actions extends Column
                     ),
                     'label' => __('Delete'),
                     'confirm' => [
-                        'title' => __('Delete %1', $item['id']),
-                        'message' => __('Are you sure you want to delete a %1 record?', $item['id'])
+                        'title' => __('Delete question number %1', $item['id']),
+                        'message' => __('Are you sure you want to delete the question number %1?', $item['id'])
                     ],
                     'post' => true
                 ],
