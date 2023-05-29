@@ -4,7 +4,7 @@
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">macademy_minerva_faq_form.macademy_minerva_faq_data_source</item>
         </item>
-        <item name="template" xsi:type="string">template/form/collapsible</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
     </argument>
     <settings>
         <namespace>macademy_minerva_faq_form</namespace>
@@ -26,4 +26,20 @@
             </settings>
         </dataProvider>
     </dataSource>
+    <fieldset name="macademy_minerva_faq_fieldset">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="hidden"/>
+        <field name="question" formElement="input">
+            <settings>
+                <label translate="true">Question</label>
+            </settings>
+        </field>
+        <field name="answer" formElement="input">
+            <settings>
+                <label translate="true">Answer</label>
+            </settings>
+        </field>
+    </fieldset>
 </form>
