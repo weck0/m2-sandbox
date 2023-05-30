@@ -9,6 +9,7 @@
     <settings>
         <buttons>
             <button name="save" class="Macademy\Minerva\Block\Adminhtml\Faq\Edit\Button\Save" />
+            <button name="back" class="Macademy\Minerva\Block\Adminhtml\Faq\Edit\Button\Back" />
         </buttons>
         <namespace>macademy_minerva_faq_form</namespace>
         <dataScope>data</dataScope>
