@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blizzard_warcraft_game_listing.blizzard_warcraft_game_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <deps>
+            <dep>blizzard_warcraft_game_listing.blizzard_warcraft_game_listing_data_source</dep>
+        </deps>
+        <spinner>blizzard_warcraft_game_columns</spinner>
+    </settings>
+    <dataSource name="blizzard_warcraft_game_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">customer_id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Blizzard_Warcraft::game</aclResource>
+        <dataProvider name="blizzard_warcraft_game_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>customer_id</requestFieldName>
+                <primaryFieldName>customer_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <paging name="listing_paging"/>
+        <columnsControls name="columns_controls"/>
+        <bookmark name="bookmarks"/>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="applied" xsi:type="array">
+                        <item name="is_published" xsi:type="string">1</item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <filterSearch name="fulltext"/>
+    </listingToolbar>
+    <columns name="blizzard_warcraft_game_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>customer_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="customer_id">
+            <settings>
+                <label translate="true">Customer ID</label>
+                <filter>textRange</filter>
+            </settings>
+        </column>
+        <column name="experience">
+            <settings>
+                <label translate="true">Experience</label>
+                <filter>int</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="promotion">
+            <settings>
+                <label translate="true">Promotion</label>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="rank">
+            <settings>
+                <label translate="true">Rank</label>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Blizzard\Warcraft\Ui\Component\Listing\Column\Actions"/>
+    </columns>
+</listing>

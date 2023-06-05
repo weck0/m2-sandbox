@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Blizzard_Warcraft::warcraft"
+            title="Warcraft"
+            translate="title"
+            module="Blizzard_Warcraft"
+            resource="Blizzard_Warcraft::warcraft"
+            parent="Magento_Backend::content"
+            sortOrder="999"
+        />
+        <add
+            id="Blizzard_Warcraft::game"
+            title="Game"
+            translate="title"
+            module="Blizzard_Warcraft"
+            resource="Blizzard_Warcraft::game"
+            parent="Blizzard_Warcraft::warcraft"
+            action="warcraft/game"
+        />
+    </menu>
+</config>

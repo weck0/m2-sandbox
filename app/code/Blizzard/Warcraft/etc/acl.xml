@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin" title="Magento Admin">
+                <resource id="Magento_Backend::content" title="Content">
+                    <resource id="Blizzard_Warcraft::warcraft" title="Warcraft" translate="title" sortOrder="900">
+                        <resource id="Blizzard_Warcraft::game" title="Game" translate="title">
+                            <resource id="Blizzard_Warcraft::faq_save" title="Save" translate="title" />
+                            <resource id="Blizzard_Warcraft::faq_delete" title="Delete" translate="title" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
