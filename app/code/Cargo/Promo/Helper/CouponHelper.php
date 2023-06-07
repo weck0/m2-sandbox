@@ -5,6 +5,8 @@ namespace Cargo\Promo\Helper;
 use Magento\SalesRule\Model\Rule;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Magento\SalesRule\Model\Rule\Condition\Address;
+use Magento\SalesRule\Model\Rule\Condition\Combine;
 
 class CouponHelper extends AbstractHelper
 {
@@ -42,7 +44,26 @@ class CouponHelper extends AbstractHelper
             ->setWebsiteIds([1]) // array of website IDs to which you want to apply the rule/coupon. In this case, it's the base website
             ->setCouponType(Rule::COUPON_TYPE_SPECIFIC)
             ->setCouponCode($couponCode)
-            ->setUsesPerCoupon(1);
+            ->setUsesPerCoupon(1)
+            ->getConditions()->loadArray(
+                    [
+                        'type' => Combine::class,
+                        'attribute' => null,
+                        'operator' => null,
+                        'value' => '1',
+                        'is_value_processed' => null,
+                        'aggregator' => 'all',
+                        'conditions' => [
+                            [
+                                'type' => Address::class,
+                                'attribute' => 'base_subtotal',
+                                'operator' => '>',
+                                'value' => 49,
+                                'is_value_processed' => false,
+                            ],
+                        ],
+                    ]
+                );
 
         $this->coupon->save();
 
